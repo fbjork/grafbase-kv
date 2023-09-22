@@ -9,9 +9,9 @@ export default async function Resolver(_, { prompt }, { kv }) {
   try {
     const value = await kv.get(prompt)
 
-    if (value === null) {
+    if (value === undefined) {
       const response = await model.invoke(prompt)
-      await kv.put(prompt, response, { ttl: 60 })
+      await kv.put(prompt, response)
       return response
     } else {
       return value
