@@ -10,7 +10,7 @@ g.query('instruct', {
 
 export default config({
   schema: g,
-  // experimental: {
-  //   kv: true
-  // }
+  experimental: {
+    kv: true
+  }
 })
