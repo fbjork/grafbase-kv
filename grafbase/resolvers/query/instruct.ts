@@ -14,6 +14,7 @@ export default async function Resolver(_, { prompt }, { kv }) {
       await kv.put(prompt, response)
       return response
     } else {
+      console.log("cached lookup for ", prompt)
       return value
     }
   } catch (e) {
