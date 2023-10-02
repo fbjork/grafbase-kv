@@ -7,14 +7,18 @@ export default async function Resolver(_, { prompt }, { kv }) {
   })
 
   try {
-    const value = await kv.get(prompt)
+    const { value } = await kv.get(prompt)
 
     if (value === null) {
       const response = await model.invoke(prompt)
-      await kv.put(prompt, response)
+      await kv.set(prompt, response, { ttl: 60 })
+
+      console.log(`uncached lookup for key: ${prompt}`)
+
       return response
     } else {
-      console.log("cached lookup for ", prompt)
+      console.log(`cached lookup for key: ${prompt}`)
+
       return value
     }
   } catch (e) {
