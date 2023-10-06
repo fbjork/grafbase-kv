@@ -3,7 +3,7 @@ import { OpenAI } from 'langchain/llms/openai'
 export default async function Resolver(_, { prompt }, { kv }) {
   const model = new OpenAI({
     modelName: "gpt-3.5-turbo-instruct",
-    openAIApiKey: process.env.OPENAI_API_KEY,
+    openAIApiKey: process.env.OPENAI_API_KEY
   })
 
   try {
