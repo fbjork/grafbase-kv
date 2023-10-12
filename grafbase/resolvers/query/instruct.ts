@@ -13,7 +13,7 @@ export default async function Resolver(_, { prompt }, { kv }) {
       const response = await model.invoke(prompt)
       await kv.set(prompt, response, { ttl: 60 })
 
-      console.log(`uncached lookup for key: ${prompt}`)
+      console.log(`uncached lookup: ${prompt}`)
 
       return response
     } else {
