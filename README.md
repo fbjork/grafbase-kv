@@ -1,4 +1,4 @@
-# Grafbase KV + LangChain Caching
+# Grafbase KV + LangChain Caching example
 
 This example shows how to use Grafbase KV to cache responses from OpenAI.
 
